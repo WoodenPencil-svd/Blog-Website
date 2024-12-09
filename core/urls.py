@@ -19,6 +19,7 @@ from a_posts.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from a_users.views import *
+from API.routers import api_urlpatterns 
 
 
 urlpatterns = [
@@ -33,10 +34,13 @@ urlpatterns = [
     path('category/<tag>',home_view, name= 'category'),
     
     path('profile/', profile_view, name='profile'),
-     path('<username>/', profile_view, name='userprofile'),
+    path('<username>/', profile_view, name='userprofile'),
     path('profile/edit/', profile_edit_view, name ='profile-edit'),
     path('profile/delete/',profile_delete_view, name ='profile-delete'),
-     path('profile/onboarding/',profile_delete_view, name ='profile-onboarding'),
+    path('profile/onboarding/',profile_delete_view, name ='profile-onboarding'),
+     
+    path('API/',include(api_urlpatterns)),
+     
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)

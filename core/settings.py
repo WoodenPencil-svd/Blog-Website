@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'a_users',
     'django_cleanup.apps.CleanupConfig',
+    'rest_framework',
     
 ]
 SITE_ID = 1

@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 def home_view(request, tag = None):
     if tag:
      posts = Post.objects.filter(tags__slug=tag)
-     tag = get_object_or_404(Tag,slug =tag)
+     tag = get_object_or_404(Tag,slug=tag)
     else:
      posts = Post.objects.all()
     categories = Tag.objects.all()
@@ -48,7 +48,7 @@ def post_create_view(request):
             post.artist = artist
 
             post.save()
-            form.save_m2m()
+            form.save()
             messages.success(request,'Post created')
             return redirect('home')
 
@@ -80,7 +80,6 @@ def post_edit_view(request,pk):
     context = {
         'post': post, 
         'form' : form
-        
     }
     return render(request,'a_posts/post_edit.html',context)
 
